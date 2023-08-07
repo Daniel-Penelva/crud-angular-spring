@@ -1,0 +1,44 @@
+Utilizar o Angular Material:
+
+Angular Material (site: https://material.angular.io/)
+Get Started: (link: https://material.angular.io/guide/getting-started) - Comando para Install Angular Material: ng add @angular/material
+
+Angular Material é uma biblioteca de componentes de interface do usuário (UI) para o Angular, desenvolvida e mantida pela equipe do Angular. 
+Ela fornece uma coleção completa de componentes estilizados e prontos para uso que seguem as diretrizes de design do Material Design, uma 
+linguagem de design desenvolvida pelo Google.
+
+O Material Design é uma abordagem de design visual que visa criar uma experiência de usuário consistente, moderna e intuitiva em diferentes 
+plataformas e dispositivos. 
+Os componentes do Angular Material implementam esses princípios de design, fornecendo uma interface coesa e agradável para seus aplicativos 
+Angular.
+
+Alguns dos principais componentes fornecidos pelo Angular Material incluem:
+
+1. Botões (Button): Botões estilizados com diferentes tamanhos e estilos.
+
+2. Caixas de diálogo (Dialog): Caixas de diálogo modais para exibir informações ou solicitar ações do usuário.
+
+3. Barras de navegação (Toolbar e Menu): Componentes para criar barras de navegação, menus e menus de contexto.
+
+4. Tabelas (Table): Componentes para exibir dados em formato de tabela.
+
+5. Campos de entrada (Input): Componentes para campos de entrada de texto, seleção e outras interações do usuário.
+
+6. Listas (List): Componentes para criar listas de itens.
+
+7. Cards: Componentes para criar cartões de conteúdo.
+
+8. Slides (Slider): Componentes para criar controles deslizantes interativos.
+
+9. E muitos outros, como Stepper, Chips, Datepicker, Progress Spinner, etc.
+
+Para cada componente criado é preciso fazer o seu respectivo import no app.module.ts.
+
+Além dos componentes, o Angular Material também fornece estilos predefinidos para criar uma aparência consistente em seus aplicativos. A 
+biblioteca é altamente personalizável e permite ajustar facilmente a aparência dos componentes para se adequarem ao design exclusivo do seu aplicativo.
+
+Para usar o Angular Material em seu projeto Angular, você precisará instalar a biblioteca usando o gerenciador de pacotes (por exemplo, npm ou 
+yarn) e importar os módulos de que você precisa no módulo apropriado do seu aplicativo.
+
+Angular Material é uma escolha popular para desenvolvedores Angular que desejam criar interfaces de usuário atraentes e eficientes de forma 
+rápida e consistente, seguindo os princípios do Material Design.
