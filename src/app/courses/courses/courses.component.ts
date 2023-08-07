@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -11,23 +12,17 @@ import { CoursesService } from '../services/courses.service';
 })
 export class CoursesComponent implements OnInit {
 
-  // Ou pode declarar assim (sem usar o constructor) -> courses: Course[{_id: '1', name: 'Angular', category: 'front-end'}];
-  courses: Course[];
+  courses: Observable <Course[]>;
 
   // Mostra a lista das colunas da tabela name e categoria num array de string
   displayedColumns = ['name', 'category'];
 
-  // Declarando o service
-  //coursesService: CoursesService;
-
   constructor(private coursesService: CoursesService) { 
-    //this.coursesService = new CoursesService();
 
     // Nosso service vai listar o nosso curso
     this.courses = this.coursesService.list();
    }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { /* TODO document why this method 'ngOnInit' is empty */ }
 
 }
