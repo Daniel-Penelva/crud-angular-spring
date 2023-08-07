@@ -123,3 +123,49 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 --------- // ----------
 Vamos  criar um modulo numa pasta shared para ter todos os imports do angular material.
 Comando: ng g m shared/app-material
+
+-------------------------------------------------------------------- // -----------------------------------------------------------------------
+Criar um service
+Comando:  ng g s courses/services/courses
+
+Vamos criar uma class de serviço (service) que vai fornecer todos os dados e vai conter toda a lógica de negócio da nossa aplicação. Ou seja, 
+tudo que for relacionado a dados, ou manipulação desses dados para que o componente receba o service de forma correta. O service possui uma 
+anotação @Injectable que é para injeção de dependência.
+
+Vale ressaltar que ao utilizar o service dentro do nosso componente será para ajudar na nossa lógica, por exemplo, a variável 'courses' no 
+courses.component.ts não sabe quais são os dados que vão ser renderizados, pois a responsabilidade disso é do serviço (service) que vai ter 
+a função de passar essas informações para o componente. A única coisa que o componente precisa saber é que vai renderizar uma lista de curso.
+Também vale ressaltar que os dados vindo servidor (dados = json) serão manipulados pelo service. A chamada entre os servidores da API Sprig e do 
+servidor do angular vai ser de formma assincrona. E no angular temos um class utilitária que fornece todos os método para poder fazer essa 
+conexão com a nossa API, que é o HttpClient.
+
+O HttpClient é um módulo da biblioteca @angular/common/http que fornece uma maneira fácil e poderosa de realizar requisições HTTP em aplicativos 
+Angular. Ele substitui o antigo módulo Http e oferece uma abordagem mais moderna e flexível para lidar com operações de rede.
+
+O HttpClient possui várias características e benefícios importantes:
+
+Requisições HTTP:
+O HttpClient permite fazer diferentes tipos de requisições HTTP, como GET, POST, PUT, DELETE e outras. Ele fornece métodos convenientes para 
+criar e enviar essas requisições.
+
+Tipagem de Dados:
+O HttpClient é integrado ao sistema de tipos do TypeScript, o que significa que ele pode fazer inferências de tipos para as respostas recebidas. 
+Isso facilita o tratamento dos dados retornados pelas requisições HTTP e ajuda a evitar erros de tipos.
+
+Observables:
+O HttpClient trabalha com Observables, uma abstração poderosa para lidar com fluxos assíncronos de dados. Isso permite que você utilize recursos 
+como operadores de transformação, combinação e manipulação de fluxos de dados.
+
+Interceptação de Requisições:
+O HttpClient permite criar interceptores que podem ser usados para pré-processar ou pós-processar as requisições e respostas. Isso é útil para 
+adicionar cabeçalhos, manipular erros, autenticação e muito mais.
+
+Gestão de Headers:
+É fácil definir e manipular cabeçalhos de requisição e resposta usando o HttpClient.
+
+Gestão de Erros:
+O HttpClient lida bem com erros HTTP, permitindo que você implemente lógicas específicas para diferentes códigos de status e tipos de erros.
+
+Segurança:
+O HttpClient suporta a adição de tokens de autorização, permitindo que você autentique suas requisições.
+
