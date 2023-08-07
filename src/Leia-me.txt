@@ -78,3 +78,36 @@ CoursesModule e retornando-o para ser carregado.
 
 Documentação lazy-loading:
 https://angular.io/guide/lazy-loading-ngmodules
+
+
+-------------------------------------------------------------------- // -----------------------------------------------------------------------
+Table do angular material:
+https://material.angular.io/components/table/overview
+
+Vamos importar o API do componente no modulo do curso.
+https://material.angular.io/components/table/api
+
+OBS. Organizar os imports de acordo com as boas práticas do angular.
+Atalho: CTRL + SHIFT + P - TS Hero 
+
+Criar uma interface - comando:
+
+
+--------- // ----------
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+<tr mat-row>:
+Essa tag <tr> representa uma linha da tabela. A diretiva mat-row é uma diretiva personalizada fornecida pelo Angular Material que é usada para 
+estilizar a linha da tabela de acordo com os estilos do Material Design.
+
+let row: Isso é uma declaração de variável. Aqui, estamos criando uma variável chamada row que representa os dados da linha atual. Essa variável 
+é usada para exibir os valores correspondentes em cada célula da tabela.
+
+*matRowDef="let row; columns: displayedColumns;":
+Esta é a diretiva matRowDef usada para definir como os dados da tabela devem ser exibidos em cada coluna da tabela. A diretiva é aplicada na 
+tag <tr mat-row> e usa duas propriedades: let row e columns: displayedColumns.
+
+O 'displayedColumns' tem a a função de mostrar para cada linha (ou cada registro) que temos na nossa lista que vai ser mostrado  as colunas 
+name e category que foram declaradas na  variável 'displayedColumns'. Ou seja, columns: displayedColumns: Aqui, columns é uma palavra-chave que 
+representa a matriz de nomes das colunas da tabela, e displayedColumns é uma variável que contém a matriz real de nomes das colunas que 
+desejamos exibir na tabela. Essa matriz é usada para mapear os dados da variável row para as colunas corretas da tabela.
