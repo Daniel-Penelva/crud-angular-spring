@@ -111,3 +111,15 @@ O 'displayedColumns' tem a a função de mostrar para cada linha (ou cada regist
 name e category que foram declaradas na  variável 'displayedColumns'. Ou seja, columns: displayedColumns: Aqui, columns é uma palavra-chave que 
 representa a matriz de nomes das colunas da tabela, e displayedColumns é uma variável que contém a matriz real de nomes das colunas que 
 desejamos exibir na tabela. Essa matriz é usada para mapear os dados da variável row para as colunas corretas da tabela.
+
+--------- // ----------
+Utilizando o Cards - Vamos importar o API do componente no modulo do curso.
+https://material.angular.io/components/card/api
+
+
+API reference for Angular Material toolbar - https://material.angular.io/components/toolbar/api
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+--------- // ----------
+Vamos  criar um modulo numa pasta shared para ter todos os imports do angular material.
+Comando: ng g m shared/app-material
