@@ -42,3 +42,39 @@ yarn) e importar os módulos de que você precisa no módulo apropriado do seu a
 
 Angular Material é uma escolha popular para desenvolvedores Angular que desejam criar interfaces de usuário atraentes e eficientes de forma 
 rápida e consistente, seguindo os princípios do Material Design.
+
+-------------------------------------------------------------------- // -----------------------------------------------------------------------
+
+Criando o módulo courses (cursos) e o roteamento
+comando: ng g m courses --routing
+
+Criando o componente courses dentro de courses
+comando: ng g c courses/courses
+
+-------------------------------------------------------------------- // -----------------------------------------------------------------------
+
+Vamos explicar linha por linha:
+
+{path: '', pathMatch: 'full', redirectTo: 'courses' }:
+Relembrar path é o caminho; O redirect vai fazer um redirecionamento para a rota courses para quando acessa a raiz da pasta, no caso, o 
+http://localhost:4200. 
+
+Esta é a primeira definição de rota. Aqui, definimos que, quando o caminho da URL estiver vazio (''), a rota deve redirecionar para 'courses'. 
+O pathMatch: 'full' indica que a rota deve ser correspondida exatamente com a URL inteira para executar o redirecionamento. Portanto, quando o 
+usuário acessar a raiz do aplicativo (por exemplo, http://seuapp.com/), ele será redirecionado para http://seuapp.com/courses.
+
+------ // ------
+
+{path: 'courses', loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule)}:
+No import é o caminho do nosso módulo filho, no caso é o caminho do nosso modulo courses (m.CoursesModule).
+
+Esta é a segunda definição de rota. Aqui, estamos dizendo que quando o caminho da URL for 'courses', o módulo CoursesModule deve ser carregado 
+de forma dinâmica. Isso é conhecido como carregamento tardio (lazy loading) de um módulo. O carregamento tardio é uma técnica para dividir o 
+aplicativo em módulos menores e carregá-los apenas quando necessário, o que pode melhorar o desempenho geral do aplicativo.
+
+O loadChildren é uma propriedade especial das rotas que aceita uma função que retorna uma promise resolvendo para o módulo que deve ser 
+carregado. Neste caso, a função () => import('./courses/courses.module').then(m => m.CoursesModule) está importando dinamicamente o módulo 
+CoursesModule e retornando-o para ser carregado.
+
+Documentação lazy-loading:
+https://angular.io/guide/lazy-loading-ngmodules
