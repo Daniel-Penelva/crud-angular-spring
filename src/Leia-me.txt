@@ -43,6 +43,8 @@ yarn) e importar os módulos de que você precisa no módulo apropriado do seu a
 Angular Material é uma escolha popular para desenvolvedores Angular que desejam criar interfaces de usuário atraentes e eficientes de forma 
 rápida e consistente, seguindo os princípios do Material Design.
 
+Site: https://material.angular.io/components/categories
+
 -------------------------------------------------------------------- // -----------------------------------------------------------------------
 
 Criando o módulo courses (cursos) e o roteamento
@@ -237,3 +239,58 @@ imprimir a lista de cursos no console.
 Portanto, quando você chama o método list(), ele faz uma requisição HTTP GET para o endpoint especificado em this.API, obtém a lista de cursos, 
 imprime-a no console e retorna um Observable com a lista de cursos. A utilização de first() garante que a requisição seja feita somente uma vez, 
 e tap() é usado para observar os valores emitidos sem alterar o fluxo de dados.
+
+-------------------------------------------------------------------- // -----------------------------------------------------------------------
+
+No Angular, a diretiva *ngFor é frequentemente usada para iterar sobre uma lista de itens e renderizar o conteúdo correspondente no template. No 
+entanto, quando você está trabalhando com Observables, como os retornados por requisições HTTP, você pode usar a diretiva *ngFor juntamente com 
+a palavra-chave async para simplificar o processo de renderização de dados assíncronos no template.
+
+A palavra-chave async permite que o Angular gerencie automaticamente a assinatura do Observable e atualize o template sempre que novos valores 
+forem emitidos. Isso torna o código mais limpo e evita que você precise manipular manualmente a assinatura e desinscrição do Observable.
+
+É importante mencionar que, ao usar async, o Angular também cuida automaticamente do ciclo de vida do Observable, desinscrevendo-o quando o 
+componente for destruído. Isso ajuda a evitar possíveis vazamentos de memória.
+
+Em resumo, a diretiva async é uma ferramenta poderosa e conveniente no Angular para lidar com dados assíncronos e simplificar a renderização de 
+listas de itens em templates. Ela facilita a exibição de dados de Observables no template de forma reativa e responsiva.
+
+Vale ressaltar que o async pode ser usado em outras diretivas também, como por exemplo, *ngIf.
+
+--------- // ----------
+
+courses$: Este é o nome da variável. O caractere $ é frequentemente usado como uma convenção para indicar que a variável é um Observable.
+
+--------- // ----------
+
+Esse script usa a diretiva estrutural *ngIf juntamente com a diretiva async para renderizar condicionalmente um conteúdo no template com base no 
+valor emitido por um Observable. Além disso, ele utiliza a diretiva as para criar um alias para o valor emitido pelo Observable.
+
+Vamos analisar o script em detalhes:
+
+ <div *ngIf="courses$ | async as courses; else loading">
+
+Explicação passo a passo:
+
+1. `*ngIf="courses$ | async as courses; else loading"`:
+   - `*ngIf` é uma diretiva estrutural que permite renderizar ou não o conteúdo com base em uma expressão condicional.
+   - `courses$` é um Observable que emite uma lista de cursos.
+   - `async` é usado para assinar o Observable e atualizar o template sempre que o valor é emitido.
+   - `as courses` cria um alias chamado `courses` para o valor emitido pelo Observable.
+   - `else loading` é usado para especificar o template alternativo (com o alias `loading`) a ser renderizado quando o valor do Observable ainda 
+      não foi emitido.
+
+2. `<div *ngIf="courses$ | async as courses; else loading">`:
+   - Se o Observable `courses$` já emitiu um valor, o conteúdo dentro deste elemento `<div>` será renderizado. Isso inclui um loop `*ngFor` para 
+     iterar sobre os cursos e renderizá-los em uma lista.
+
+3. `<ng-template #loading>`:
+   - Este é o template alternativo (definido com a diretiva `else`) a ser exibido quando o valor do Observable ainda não foi emitido.
+   - Ele contém a mensagem "Carregando..." para indicar ao usuário que os dados estão sendo buscados.
+
+   <ng-template #loading>
+    <mat-spinner></mat-spinner>
+   </ng-template>
+
+Em resumo, esse script permite renderizar uma lista de cursos se o Observable `courses$` já emitiu um valor. Caso contrário, ele exibe a mensagem 
+"Carregando..." enquanto aguarda o valor ser emitido. Isso cria uma experiência de usuário mais amigável ao carregar dados assíncronos.
