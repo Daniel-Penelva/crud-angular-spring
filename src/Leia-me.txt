@@ -306,3 +306,72 @@ vamos importar o AppMaterialModule.
 
 API - site: https://material.angular.io/components/dialog/api
 import do Dialog na Angular Material: import {MatDialogModule} from '@angular/material/dialog'; 
+
+-------------------------------------------------------------------- // -----------------------------------------------------------------------
+
+API - site: https://material.angular.io/components/icon/api
+API reference for Angular Material icon: import {MatIconModule} from '@angular/material/icon';
+
+Biblioteca de icons do Material Angular:
+https://fonts.google.com/icons?hl=pt-br
+
+--------- // ----------
+
+Vamos criar uma funcionalidade onde dependendo da categoria vai criar um icone diferente, para fazer isso vamos utilizar uma classe no Angular
+que se chama pipe, essa classe transforma valores, ou seja, dado um valor, vai existir uma lógica e retorna esse valor transformado.
+
+No Angular, os pipes são recursos poderosos para transformar e formatar dados de maneira flexível e reutilizável diretamente nos templates. Eles 
+são usados para realizar transformações visuais em valores exibidos ao usuário, sem modificar os valores originais nos componentes.
+
+Aqui estão os principais pontos sobre as classes de pipes no Angular:
+
+1. **Transformação de Dados:** Os pipes permitem que você transforme, formate e manipule dados antes de serem exibidos nos templates. Isso é 
+útil para exibir datas em formatos diferentes, formatar números, ordenar listas e muito mais.
+
+2. **Sintaxe:** Os pipes são usados dentro das expressões interpoladas ({{ }}) nos templates. A sintaxe básica é `{{ valor | pipe }}`, onde 
+`valor` é o dado a ser transformado e `pipe` é o nome do pipe a ser aplicado.
+
+3. **Encadeamento:** Você pode encadear vários pipes para realizar transformações consecutivas em um dado. Por exemplo, 
+`{{ data | date | uppercase }}` primeiro formata a data e depois converte o texto resultante para maiúsculas.
+
+4. **Parâmetros:** Alguns pipes podem aceitar parâmetros adicionais para personalizar a transformação. Por exemplo, o pipe `date` aceita um 
+formato de data específico como parâmetro.
+
+5. **Criar Pipes Personalizados:** Além dos pipes embutidos fornecidos pelo Angular (como `date`, `uppercase`, `currency`, etc.), você pode criar 
+seus próprios pipes personalizados. Isso é útil quando você precisa realizar transformações específicas ao seu aplicativo.
+
+Os pipes são uma maneira poderosa de melhorar a apresentação dos dados em seus templates, tornando-os mais legíveis e compreensíveis para os 
+usuários. Eles também ajudam a manter a lógica de transformação separada da lógica de negócios nos componentes, seguindo os princípios de uma 
+arquitetura limpa e modular.
+
+Gerando um modulo com nome pipe no modulo compartilhado para q outros módulos possam usá-lo. Por padrão o nosso pipe category só estará visível
+apenas para o módulo shared.
+comando: ng g pipe shared/pipes/category
+
+Depois de criado o pipe vamos importar o 'CategoryPipe' no exports para q possa ser compartilhado para o módulo 
+shared.module.ts.
+
+--------- // ----------
+O PipeTransform 
+
+A interface `PipeTransform` é um componente fundamental no Angular relacionado ao uso de pipes. Ela define um contrato que os pipes devem seguir 
+para realizar transformações de dados em templates.
+
+Aqui estão os principais pontos sobre a interface `PipeTransform`:
+
+1. **Definição do Contrato:** A interface `PipeTransform` é usada para definir o contrato que um pipe deve seguir. Isso significa que um pipe 
+que implementa a interface `PipeTransform` deve fornecer uma implementação para o método `transform()`.
+
+2. **Método `transform()`:** O método `transform()` é o ponto central do pipe. Ele recebe pelo menos um argumento (o valor a ser transformado) 
+e, opcionalmente, pode receber mais argumentos (parâmetros) dependendo das necessidades do pipe.
+
+3. **Retorno:** O método `transform()` deve retornar o valor transformado. Isso pode ser qualquer tipo de dado que seja apropriado para a 
+transformação pretendida.
+
+4. **Uso em Pipes Personalizados:** Ao criar um pipe personalizado, você deve implementar a interface `PipeTransform` e, em seguida, implementar 
+o método `transform()` de acordo com a lógica de transformação desejada.
+
+Quando você usa o pipe no template, o Angular invocará automaticamente o método `transform()` do pipe, passando os argumentos apropriados.
+
+A interface `PipeTransform` é um dos principais conceitos que permite a criação de pipes personalizados no Angular, tornando possível a 
+transformação flexível e reutilizável de dados nos templates.
