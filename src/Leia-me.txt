@@ -294,3 +294,15 @@ Explicação passo a passo:
 
 Em resumo, esse script permite renderizar uma lista de cursos se o Observable `courses$` já emitiu um valor. Caso contrário, ele exibe a mensagem 
 "Carregando..." enquanto aguarda o valor ser emitido. Isso cria uma experiência de usuário mais amigável ao carregar dados assíncronos.
+
+--------- // ----------
+
+Criar um module shared - comando: ng g m shared
+Criar um componente shared - comando: ng g c shared/components/error-dialog
+
+Vamos criar o module e o component para tratar os erros que possam vir a ocorrer e que serão mostrados para o usuário.
+Como vamos trabalhar com o Dialog, vamos importar 'MatDialogModule' no nosso modulo app-material.module.ts e no nosso shared.module.ts 
+vamos importar o AppMaterialModule.  
+
+API - site: https://material.angular.io/components/dialog/api
+import do Dialog na Angular Material: import {MatDialogModule} from '@angular/material/dialog'; 
