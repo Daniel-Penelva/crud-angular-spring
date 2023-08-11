@@ -16,7 +16,7 @@ export class CoursesComponent implements OnInit {
   courses$: Observable<Course[]>;
 
   // Mostra a lista das colunas da tabela name e categoria num array de string
-  displayedColumns = ['name', 'category'];
+  displayedColumns = ['_id','name', 'category'];
 
   constructor(
     private coursesService: CoursesService,
