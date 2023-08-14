@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
-import { MatDialog } from '@angular/material/dialog';
-import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-courses',
@@ -16,11 +17,13 @@ export class CoursesComponent implements OnInit {
   courses$: Observable<Course[]>;
 
   // Mostra a lista das colunas da tabela name e categoria num array de string
-  displayedColumns = ['_id','name', 'category'];
+  displayedColumns = ['_id','name', 'category', 'actions'];
 
   constructor(
     private coursesService: CoursesService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public router: Router,
+    private route: ActivatedRoute
   ) {
     // Nosso service vai listar o nosso curso
     this.courses$ = this.coursesService.list().pipe(
@@ -40,5 +43,11 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {
     /* TODO document why this method 'ngOnInit' is empty */
+  }
+
+  onAdd(){
+    //console.log('onAdd');
+
+    this.router.navigate(["new"], {relativeTo: this.route});
   }
 }

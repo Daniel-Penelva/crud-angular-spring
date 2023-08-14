@@ -1,3 +1,7 @@
+comando para executar o servidor: npm run start
+
+-------------------------------------------------------------------- // -----------------------------------------------------------------------
+
 Utilizar o Angular Material:
 
 Angular Material (site: https://material.angular.io/)
@@ -389,6 +393,9 @@ Também vamos adicionar o package.json vamos fazer a seguinte modificação na p
 Essa modificação tem como objetivo que quando o ng serve for gerada vai ser utilizado o proxy. Portanto, sempre que for usar o ng serve, agora teremos 
 que utilizar o comando 'npm run start' para que possamos sempre utilizar esse proxy.
 
+Vale ressaltar como estamos utilizando um proxy para resolver os  problemas que viriam com o cors o servidor agora irá ser executado com o 
+comando: npm run start (na parte do Angular).
+
 ---------- // ----------
 Vamos utilizar 'fasterXML' que possui uma biblioteca 'jackson' para fazer o parciamento entre os parâmetros do objeto Curso para Json e vice-versa. Vale ressaltar que a propriedade id
 definida no front-end (Angular) está definida da seguinte maneira: _id. Já na nossa API Spring Boot a propriedade está definida como 'id'. Logo, 
@@ -417,3 +424,53 @@ formato apropriado, como JSON, XML ou outros, dependendo da configuração da ap
 
 A anotação @ResponseBody é frequentemente usada em conjunto com a anotação @RestController, que combina a funcionalidade de @Controller e 
 @ResponseBody, permitindo que você crie facilmente APIs RESTful em sua aplicação Spring.
+
+----------------------------------------------------------------------- // -----------------------------------------------------------------------
+
+Vale destacar que vamos utilizar o <mat-header-cell> para customizar a criação das ações dos botões de cadastrar curso, é importante também dizer 
+que junto com o <mat-header-cell> utiliza o <mat-cell> que seria o corpo. Logo, é preciso usar ambos, caso contrário, dará erro.
+
+Essa tag e mais a diretiva <mat-cell *matCellDef="let course"> tem a função de que para cada registro de curso que vier na minha coleção será 
+feito alguma coisa. Ou seja, é uma diretiva estrutural do Angular Material usada para definir o conteúdo que será renderizado na célula. O trecho 
+let course cria uma variável course que contém os dados da linha atual da tabela.
+
+Lembrando que esse script faz parte do Angular Material e está relacionado ao uso de tabelas (mat-table) para exibir dados tabulares em um 
+formato de tabela. Mais especificamente, ele está relacionado ao conteúdo de uma célula (cell) dentro de uma linha (row) da tabela.
+
+---------- // ----------
+Vamos criar um componente para o formulário, pois utilizaremos para o roteamento.
+
+Comando: ng g c courses/course-form
+
+---------- // ----------
+
+Método da ação do botão add o curso:
+
+```
+onAdd() {
+  this.router.navigate(["new"], { relativeTo: this.route });
+}
+```
+
+O script está relacionado à navegação em um aplicativo Angular. Ele é usado para redirecionar o usuário para uma nova rota, quando um evento 
+específico, como um clique em um botão, ocorre.
+
+Aqui está a explicação detalhada:
+
+- `onAdd()`: Isso é um método chamado `onAdd()`, geralmente associado a um evento, como o clique em um botão. Quando esse evento ocorre, o método 
+  é executado.
+
+- `this.router.navigate(["new"], { relativeTo: this.route })`:
+  - `this.router.navigate(...)`: Isso é usado para navegar para uma nova rota.
+
+  - `["new"]`: Isso é um array que especifica a nova rota para a qual você deseja navegar. Nesse caso, a rota é definida como "new". Isso pode 
+     ser ajustado de acordo com as rotas definidas em seu aplicativo.
+
+  - `{ relativeTo: this.route }`: Isso é uma opção que especifica que a navegação é relativa à rota atual. Isso é útil quando você está usando 
+     roteamento aninhado (nested routing) e deseja navegar com base na rota atual.
+
+Em um cenário de roteamento aninhado, isso significa que o componente atual possui rotas aninhadas dentro dele. O método `onAdd()` é usado para 
+navegar para uma nova rota chamada "new" em relação à rota atual. Isso pode ser usado, por exemplo, para abrir um formulário de criação de um 
+novo item.
+
+Em resumo, o script `onAdd()` é usado para navegar para uma nova rota em relação à rota atual, com base em um evento, como o clique em um botão. 
