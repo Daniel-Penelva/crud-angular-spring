@@ -474,3 +474,151 @@ navegar para uma nova rota chamada "new" em relação à rota atual. Isso pode s
 novo item.
 
 Em resumo, o script `onAdd()` é usado para navegar para uma nova rota em relação à rota atual, com base em um evento, como o clique em um botão. 
+
+
+Certamente! A classe `ReactiveFormsModule` é parte do módulo `@angular/forms` do Angular e é usada para habilitar e simplificar o gerenciamento de formulários reativos em seu aplicativo. Formulários reativos são uma abordagem poderosa para lidar com a entrada do usuário e a validação de dados em aplicativos Angular.
+
+Aqui estão os principais pontos sobre a classe `ReactiveFormsModule`:
+
+1. **Formulários Reativos:** Formulários reativos são uma alternativa à abordagem de formulários template-driven no Angular. Eles permitem que você construa formulários dinâmicos e complexos usando código TypeScript para controlar o comportamento dos formulários e a validação dos dados.
+
+2. **Facilita a Manipulação:** O `ReactiveFormsModule` fornece classes e métodos para criar, controlar e validar campos de formulário de maneira programática. Isso é particularmente útil ao criar formulários mais complexos que requerem validações personalizadas, lógica de exibição condicional e manipulação avançada de dados.
+
+3. **FormGroup e FormControl:** A classe `FormGroup` é usada para criar grupos de campos relacionados, enquanto a classe `FormControl` é usada para criar campos individuais dentro de um grupo. Os `FormGroup` e `FormControl` permitem que você defina validações, valores iniciais e outras configurações.
+
+4. **Validação:** Com o `ReactiveFormsModule`, você pode definir validações de maneira declarativa e programática. Isso inclui validações pré-construídas, como `required` e `minLength`, além de validações personalizadas que você pode definir.
+
+5. **Dinamismo:** Como os formulários reativos são construídos programaticamente usando TypeScript, você pode facilmente adicionar ou remover campos dinamicamente, reagir a eventos e alterações de estado e controlar o fluxo de dados de maneira mais precisa.
+
+6. **Tratamento de Erros:** Os formulários reativos fornecem maneiras eficazes de tratar erros e exibir mensagens de validação aos usuários. Você pode acessar os estados de validação dos campos e grupos para exibir feedback apropriado.
+
+Para usar o `ReactiveFormsModule`, você deve importá-lo no módulo onde você deseja usar formulários reativos. Geralmente, você importa o módulo `ReactiveFormsModule` de `@angular/forms`:
+
+```typescript
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [
+    // ...
+    ReactiveFormsModule
+  ],
+  // ...
+})
+export class YourModule { }
+```
+----------------------------------------------------------------------- // -----------------------------------------------------------------------
+
+A classe ReactiveFormsModule é parte do módulo @angular/forms do Angular e é usada para habilitar e simplificar o gerenciamento de formulários 
+reativos em seu aplicativo. Formulários reativos são uma abordagem poderosa para lidar com a entrada do usuário e a validação de dados em 
+aplicativos Angular.
+
+Aqui estão os principais pontos sobre a classe `ReactiveFormsModule`:
+
+1. **Formulários Reativos:** Formulários reativos são uma alternativa à abordagem de formulários template-driven no Angular. Eles permitem que 
+   você construa formulários dinâmicos e complexos usando código TypeScript para controlar o comportamento dos formulários e a validação dos 
+   dados.
+
+2. **Facilita a Manipulação:** O `ReactiveFormsModule` fornece classes e métodos para criar, controlar e validar campos de formulário de maneira 
+   programática. Isso é particularmente útil ao criar formulários mais complexos que requerem validações personalizadas, lógica de exibição 
+   condicional e manipulação avançada de dados.
+
+3. **FormGroup e FormControl:** A classe `FormGroup` é usada para criar grupos de campos relacionados, enquanto a classe `FormControl` é usada 
+   para criar campos individuais dentro de um grupo. Os `FormGroup` e `FormControl` permitem que você defina validações, valores iniciais e 
+   outras configurações.
+
+4. **Validação:** Com o `ReactiveFormsModule`, você pode definir validações de maneira declarativa e programática. Isso inclui validações 
+   pré-construídas, como `required` e `minLength`, além de validações personalizadas que você pode definir.
+
+5. **Dinamismo:** Como os formulários reativos são construídos programaticamente usando TypeScript, você pode facilmente adicionar ou remover 
+   campos dinamicamente, reagir a eventos e alterações de estado e controlar o fluxo de dados de maneira mais precisa.
+
+6. **Tratamento de Erros:** Os formulários reativos fornecem maneiras eficazes de tratar erros e exibir mensagens de validação aos usuários. Você 
+   pode acessar os estados de validação dos campos e grupos para exibir feedback apropriado.
+
+Em resumo, o `ReactiveFormsModule` é uma parte essencial da abordagem de formulários reativos no Angular. Ele fornece ferramentas poderosas 
+para criar, gerenciar e validar formulários dinâmicos de maneira programática, permitindo uma maior flexibilidade e controle em comparação com 
+formulários template-driven.
+
+---------- // ----------
+No courses-form.component.ts:
+
+A classe `FormBuilder` é uma parte importante do Angular e faz parte do módulo `@angular/forms`. Ela fornece um serviço que simplifica a criação 
+e gerenciamento de instâncias `FormGroup` e `FormControl` em formulários reativos.
+
+Aqui estão os principais pontos sobre a classe `FormBuilder`:
+
+1. **Simplifica a Criação de Formulários:** A principal função do `FormBuilder` é simplificar a criação de formulários reativos. Em vez de criar 
+    manualmente instâncias de `FormGroup` e `FormControl`, você pode usar os métodos do `FormBuilder` para criar essas instâncias de forma mais ]
+    concisa.
+
+2. **Métodos do FormBuilder:** O `FormBuilder` fornece uma série de métodos para criar instâncias de `FormGroup` e `FormControl` com configurações 
+   específicas. Esses métodos incluem `group()`, `control()`, `array()`, entre outros.
+
+3. **Configurações Simplificadas:** Os métodos do `FormBuilder` permitem definir configurações, como valores iniciais, validadores e outros 
+   parâmetros, de maneira mais legível e concisa.
+
+4. **Exemplo de Uso:** Aqui está um exemplo simples de como o `FormBuilder` pode ser usado para criar um `FormGroup` com campos `FormControl`:
+
+O `FormBuilder` é injetado no construtor do componente. Em seguida, usamos o método `group()` para criar um `FormGroup`. Cada campo é definido 
+usando o método `control()`, que aceita um valor inicial e uma série de validadores.
+
+Ao usar o `FormBuilder`, você pode definir rapidamente as estruturas de seus formulários reativos, melhorando a legibilidade do código e 
+tornando-o mais fácil de manter.
+
+Em resumo, o `FormBuilder` é um serviço no Angular que simplifica a criação e configuração de instâncias de `FormGroup` e `FormControl` em 
+formulários reativos. Ele é uma ferramenta útil para tornar a criação de formulários mais eficiente e legível.
+
+```
+form:FormGroup;
+
+  constructor(private formBuilder:FormBuilder) { 
+    this.form = this.formBuilder.group({
+      name:[null],
+      category:[null]
+    });
+  }
+```
+O objetivo é criar um formulário que tenha dois campos: "name" e "category".
+
+Aqui está a explicação passo a passo:
+
+form: FormGroup;: Declara uma propriedade chamada form que é do tipo FormGroup. Esta propriedade será usada para 
+      representar o formulário reativo.
+
+constructor(private formBuilder: FormBuilder) { ... }: O construtor da classe. Ele é usado para inicializar a classe e 
+pode receber parâmetros. Neste caso, o construtor recebe uma instância do serviço FormBuilder através da injeção de 
+dependência.
+
+this.form = this.formBuilder.group({ ... });: Aqui, estamos usando o serviço FormBuilder para criar um FormGroup. O 
+método group() é usado para criar um grupo de campos relacionados no formulário.
+
+name: [null],: Isso define um campo chamado "name" no formulário com um valor inicial de null.
+
+category: [null]: Isso define um campo chamado "category" no formulário com um valor inicial de null.
+
+No geral, esse script cria um formulário reativo com dois campos: "name" e "category". Os valores iniciais dos campos 
+são definidos como null. Isso é apenas um exemplo básico, mas você pode adicionar validadores, valores iniciais e outras 
+configurações mais avançadas aos campos do formulário conforme necessário.
+
+---------- // ----------
+Vamos agora criar o formulário de cadastro do curso, para isso vamos utilizar o anglar material e o 'form field', portanto, vamos importar a API
+e adicionar no 'app-material.module.ts'.
+
+Link: https://material.angular.io/components/form-field/api
+API reference for Angular Material form-field
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+Também vamos importar o MatInputModule - import: 
+import { MatInputModule } from '@angular/material/input'; 
+
+E também vamos utilizar o Card para agrupar os campos (inputs).
+
+Lembrando que o nosso courses-module.ts já está  exportando (exports) o sharedModule que também tem o app-material.module.ts (AppMaterialModule), 
+logo não precisamos ficar importando as API do angular material no courses-module.ts
+
+Construindo o formulário - bom saber: 
+ -> É importante ressaltar que precisamos linkar a tag <form> do course-form.component.html com a variavel 'form' do course-form.component.ts. E vamos
+    fazer isso através da diretiva formGroup, exemplificando: <form [formGroup]="form"> ...
+
+ -> Próximo passo é associar o campo de input com a variável 'name' e 'category'. E para fazer isso utilizaremos o 'formControlName', 
+ exemplificando: <input matInput placeholder="Nome" formControlName="name">
