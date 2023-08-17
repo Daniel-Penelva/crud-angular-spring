@@ -622,3 +622,35 @@ Construindo o formulário - bom saber:
 
  -> Próximo passo é associar o campo de input com a variável 'name' e 'category'. E para fazer isso utilizaremos o 'formControlName', 
  exemplificando: <input matInput placeholder="Nome" formControlName="name">
+
+----------------------------------------------------------------------- // -----------------------------------------------------------------------
+No CoursesService:
+
+Esse script faz uma chamada HTTP do tipo POST para enviar dados (um registro) para um servidor usando o Angular's `HttpClient`. O código também 
+inclui o uso do operador `pipe()` com o operador `first()`.
+
+Aqui está a explicação passo a passo:
+
+```typescript
+this.httpClient.post<Course>(this.API, record).pipe(first());
+```
+
+- `this.httpClient`: Isso se refere à instância do serviço `HttpClient` que é injetada no componente (ou serviço) onde esse código está sendo 
+   usado. O `HttpClient` é usado para fazer requisições HTTP.
+
+- `.post<Course>`: O método `.post()` é usado para fazer uma requisição HTTP do tipo POST. A palavra `<Course>` é uma indicação de que tipo de 
+   dado esperamos como resposta da requisição. Nesse caso, parece que estamos esperando um objeto do tipo `Course` como resposta.
+
+- `this.API`: `this.API` é uma variável que armazena a URL base para a API a qual você está fazendo a chamada POST. Que está definido em 
+               no serviço.
+
+- `record`: `record` é o objeto que você deseja enviar como parte do corpo da requisição POST. Esse objeto representa os dados que você deseja 
+             enviar ao servidor.
+
+- `.pipe(first())`: Aqui, estamos usando o método `pipe()` para adicionar operadores ao fluxo de observação da requisição HTTP. No caso, estamos 
+   usando o operador `first()`. O operador `first()` é usado para pegar o primeiro valor emitido pela observação e, em seguida, completar a 
+   observação. Isso é útil quando você deseja apenas a primeira resposta da requisição e não precisa ouvir eventuais atualizações subsequentes.
+
+Em resumo, esse script faz uma chamada HTTP do tipo POST usando o serviço `HttpClient`. Ele envia os dados do objeto `record` para a URL 
+definida em `this.API` e espera receber um objeto do tipo `Course` como resposta. O operador `first()` é usado para pegar apenas a primeira 
+resposta e completar a observação.
