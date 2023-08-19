@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,7 +15,8 @@ export class CourseFormComponent implements OnInit {
   // Grupo de campos
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private service: CoursesService, private snackBar: MatSnackBar) {
+  constructor(private formBuilder: FormBuilder, private service: CoursesService,
+     private snackBar: MatSnackBar, private location: Location) {
     this.form = this.formBuilder.group({
       name: [null],
       category: [null],
@@ -27,12 +29,21 @@ export class CourseFormComponent implements OnInit {
     //console.log(this.form.value);
 
     this.service.save(this.form.value).subscribe(
-      (result) => console.log(result),
+      (result) => this.onSucess(),
       (error) => this.onError()
     );
   }
 
-  onCancel() {}
+  // Método que renderiza para a página anterior (principal)
+  onCancel() {
+    this.location.back();
+  }
+
+  // Método que gera a mensagem de sucesso de cadastro do curso ao usuário e também renderiza para a página anterior
+  onSucess() {
+    this.snackBar.open('Curso salvo com sucesso!', '', { duration: 5000 });
+    this.onCancel();
+  }
 
   private onError() {
     this.snackBar.open('Erro ao salvar curso', '', { duration: 5000 });
