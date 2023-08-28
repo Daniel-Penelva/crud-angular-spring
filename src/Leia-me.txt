@@ -673,3 +673,9 @@ Comando: ng update @angular/cli@14.1.0 @angular/core@14.1.0
 Depois de executar os comandos acima irá passar pelo processo de atualização (será possível visualizar as atualizações no package.json).
 Agora iremos atualizar o angular cdk e o material.
 Comando: ng update @angular/cdk@14.1.0 @angular/material@14.1.0
+
+----------------------------------------------------------------------- // -----------------------------------------------------------------------
+Refatoração para utilizar Typed Forms do Angular
+
+Essa Classe 'NonNullableFormBuilder' do Angular garante que os campos não sejam nulo. Repare que ao invés de inicializar como nulo, agora será
+inicializado como vazio (utilizando as duas aspas simples). Vale ressaltar que pelo nome do campo (name e category) sabemos que é do tipo String.

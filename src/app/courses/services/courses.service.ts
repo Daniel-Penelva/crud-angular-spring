@@ -24,7 +24,9 @@ export class CoursesService {
 
   // Método para salvar curso no formulario - vai passar o método post e os dados nome e categoria pela variável record (body = corpo)
   // Lembrando que retorna um Observable porque ele trabalha com HttpClient -> por exemplo, save(record: Course): Observable<any>{...}
-  save(record: Course){
+  // Partial<Course> é usado para indicar que o objeto passado como parâmetro contém apenas um subconjunto das propriedades da classe Course. 
+  //Isso é útil quando você quer permitir que apenas algumas propriedades do objeto sejam definidas
+  save(record: Partial<Course>){
     //console.log(record);
 
     return this.httpClient.post<Course>(this.API, record).pipe(first());
