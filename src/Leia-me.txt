@@ -654,3 +654,22 @@ this.httpClient.post<Course>(this.API, record).pipe(first());
 Em resumo, esse script faz uma chamada HTTP do tipo POST usando o serviço `HttpClient`. Ele envia os dados do objeto `record` para a URL 
 definida em `this.API` e espera receber um objeto do tipo `Course` como resposta. O operador `first()` é usado para pegar apenas a primeira 
 resposta e completar a observação.
+
+----------------------------------------------------------------------- // -----------------------------------------------------------------------
+
+Atualizando para o Angular V14:
+
+Comandos: ng update
+
+Vão abrir os Commandos to update  e também terá a version sendo informada (por exemplo, 14.1.0) - são eles:
+    . ng update @angular/cdk
+    . ng update @angular/cli
+    . ng update @angular/core
+    . ng update @angular/material
+
+Então faremos o seguinte comando para atualizar o Angular - por exemplo, atualizando o angularCli e o angularCore
+Comando: ng update @angular/cli@14.1.0 @angular/core@14.1.0
+
+Depois de executar os comandos acima irá passar pelo processo de atualização (será possível visualizar as atualizações no package.json).
+Agora iremos atualizar o angular cdk e o material.
+Comando: ng update @angular/cdk@14.1.0 @angular/material@14.1.0
