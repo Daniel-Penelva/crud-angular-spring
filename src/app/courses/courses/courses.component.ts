@@ -16,9 +16,6 @@ export class CoursesComponent implements OnInit {
   // O caractere $ é frequentemente usado como uma convenção para indicar que a variável é um Observable
   courses$: Observable<Course[]>;
 
-  // Mostra a lista das colunas da tabela name e categoria num array de string
-  displayedColumns = ['_id','name', 'category', 'actions'];
-
   constructor(
     private coursesService: CoursesService,
     public dialog: MatDialog,
