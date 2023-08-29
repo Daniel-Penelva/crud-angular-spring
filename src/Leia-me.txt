@@ -679,3 +679,12 @@ Refatoração para utilizar Typed Forms do Angular
 
 Essa Classe 'NonNullableFormBuilder' do Angular garante que os campos não sejam nulo. Repare que ao invés de inicializar como nulo, agora será
 inicializado como vazio (utilizando as duas aspas simples). Vale ressaltar que pelo nome do campo (name e category) sabemos que é do tipo String.
+
+----------------------------------------------------------------------- // -----------------------------------------------------------------------
+
+Para Anotação:
+
+@Input - Tudo que está vindo para o componente, como por exemplo, "@Input() courses: Course[] = [];" que está indo para a lista de course (curso).
+
+@Output - É tudo que está saindo, ou seja, os eventos que estão saindo. É um decorator @Output() é usado para expor eventos personalizados 
+em um componente. Isso permite que um componente filho emita eventos para um componente pai.
