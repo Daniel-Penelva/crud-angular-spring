@@ -688,3 +688,36 @@ Para Anotação:
 
 @Output - É tudo que está saindo, ou seja, os eventos que estão saindo. É um decorator @Output() é usado para expor eventos personalizados 
 em um componente. Isso permite que um componente filho emita eventos para um componente pai.
+
+----------------------------------------------------------------------- // -----------------------------------------------------------------------
+
+Criando um resolver para pré carregar dados antes que uma rota seja ativada - terminal:
+ng g resolver courses/guards/course
+
+Os resolvers são usados para pré-carregar dados antes que uma rota seja ativada. Eles são uma parte importante da navegação e da resolução de 
+dados em um aplicativo Angular. A função principal de um resolver é garantir que os dados necessários para uma determinada rota estejam 
+disponíveis antes que a rota seja ativada e o componente seja carregado. Aqui estão as principais funções e benefícios dos resolvers:
+
+1. **Pré-carregamento de Dados**: Os resolvers permitem que você carregue dados de forma assíncrona antes de um componente ser exibido. Isso é 
+   útil quando você precisa de dados específicos antes de exibir uma página.
+
+2. **Evitar Exibição de Páginas Vazias ou com Dados Incompletos**: Os resolvers evitam que uma página seja exibida sem os dados necessários. 
+   Isso melhora a experiência do usuário, pois evita que o usuário veja páginas vazias ou com dados incompletos.
+
+3. **Gerenciamento de Carregamento**: Os resolvers geralmente são usados em conjunto com indicadores de carregamento, como spinners ou barras de 
+   progresso, para informar ao usuário que os dados estão sendo carregados.
+
+4. **Melhor Controle de Rota**: Os resolvers permitem que você controle de forma mais precisa quando uma rota é ativada. Você pode configurar 
+   resolvers para serem executados antes de uma rota ser ativada, o que é útil quando a rota depende de dados específicos.
+
+5. **Compartilhamento de Dados**: Você pode usar resolvers para buscar dados uma vez e compartilhá-los entre vários componentes que 
+   compartilham a mesma rota. Isso evita buscas desnecessárias de dados.
+
+6. **Tratamento de Erros**: Os resolvers também permitem que você trate erros de carregamento de dados de forma centralizada e forneça uma 
+   experiência consistente para o usuário em caso de falha na obtenção de dados.
+
+Para usar um resolver em uma rota, você o configura na definição da rota no arquivo de roteamento do seu aplicativo. Por exemplo:
+
+Em resumo, os resolvers são uma ferramenta poderosa para o pré-carregamento de dados em um aplicativo Angular, garantindo que os dados estejam 
+prontos antes de exibir uma página e melhorando a experiência do usuário. Eles desempenham um papel fundamental na navegação e na resolução de 
+dados em um aplicativo Angular.

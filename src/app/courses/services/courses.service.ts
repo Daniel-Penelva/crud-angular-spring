@@ -31,4 +31,9 @@ export class CoursesService {
 
     return this.httpClient.post<Course>(this.API, record).pipe(first());
   }
+
+  // Método para buscar por id
+  loadById(id: string){
+    return this.httpClient.get<Course>(`${this.API}/${id}`);
+  }
 }
