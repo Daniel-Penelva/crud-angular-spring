@@ -721,3 +721,58 @@ Para usar um resolver em uma rota, você o configura na definição da rota no a
 Em resumo, os resolvers são uma ferramenta poderosa para o pré-carregamento de dados em um aplicativo Angular, garantindo que os dados estejam 
 prontos antes de exibir uma página e melhorando a experiência do usuário. Eles desempenham um papel fundamental na navegação e na resolução de 
 dados em um aplicativo Angular.
+
+---------- // ----------
+
+O script abiaxo está relacionado ao uso do serviço `ActivatedRoute` para acessar dados de rota. Explicando os detalhes:
+
+```typescript
+const course: Course = this.route.snapshot.data['course'];
+```
+
+- `this.route`: `this.route` é uma instância do serviço `ActivatedRoute`. O `ActivatedRoute` é usado para acessar informações sobre a rota ativa 
+   no momento, incluindo os parâmetros, dados e outros detalhes relacionados à rota.
+
+- `.snapshot`: O `ActivatedRoute` possui uma propriedade chamada `snapshot` que fornece um instantâneo dos parâmetros e dados da rota no momento 
+   atual. É um objeto que contém informações estáticas sobre a rota.
+
+- `.data`: O `.data` é uma propriedade dentro do objeto `snapshot` que permite acessar os dados associados à rota. Esses dados são normalmente 
+   definidos na configuração da rota usando o `data` em `RouterModule.forRoot()`.
+
+- `['course']`: Aqui, estamos acessando o valor associado à chave `'course'` nos dados da rota. Isso implica que, na configuração da rota, os 
+   dados da rota têm uma propriedade chamada `'course'` definida.
+
+- `const course: Course`: Isso está declarando uma variável chamada `course` com o tipo `Course`. Presumivelmente, `Course` é um tipo ou uma 
+   classe que representa os dados de um curso no seu aplicativo.
+
+Em resumo, o código em questão está obtendo os dados associados à rota atual usando o `snapshot.data` do serviço `ActivatedRoute`. Ele acessa o 
+valor correspondente à chave `'course'` nos dados da rota e o armazena na variável `course`, que é do tipo `Course`. Isso é útil quando você 
+precisa recuperar dados associados à rota, como detalhes de um curso, para usar no componente que está sendo carregado pela rota.
+
+
+---------- // ----------
+
+O script abaixo está relacionado à manipulação de um formulário reativo no Angular. Mais especificamente, ele está definindo os valores de um 
+formulário usando o método `setValue()`.
+
+Aqui está uma explicação passo a passo:
+
+```typescript
+this.form.setValue({_id: course._id, name: course.name, category: course.category});
+```
+
+- `this.form`: O `this.form` é uma instância de um formulário reativo no Angular. Um formulário reativo é uma forma de gerenciar formulários em 
+   Angular, onde você cria um modelo de formulário usando classes e métodos para definir, validar e manipular os dados do formulário.
+
+- `.setValue()`: `setValue()` é um método do objeto `FormGroup` em um formulário reativo. Um `FormGroup` é uma parte fundamental dos formulários 
+    reativos e é usado para agrupar campos do formulário e gerenciar seu estado.
+
+- `{_id: course._id, name: course.name, category: course.category}`: Dentro do método `setValue()`, passa um objeto que representa os 
+   valores que deseja definir no formulário. Este objeto deve ter a mesma estrutura de dados que o formulário espera. No caso, está definindo 
+   valores para campos `_id`, `name` e `category` com base em algum objeto `course` - para recuperar os valores do objeto para edição.
+
+O que este código faz é definir os valores do formulário para que correspondam aos valores de um objeto `course`. Isso é útil quando você deseja 
+preencher um formulário com dados existentes, como ao editar um registro. Note que o objeto passado para `setValue()` deve incluir todos os 
+campos do formulário e os valores correspondentes. Vale ressaltar que se você deseja definir apenas alguns campos do formulário, pode usar o 
+método `patchValue()` em vez de `setValue()`, que permite definir um subconjunto dos campos do formulário sem a necessidade de incluir todos os 
+campos no objeto.
