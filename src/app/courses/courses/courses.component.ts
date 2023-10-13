@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
@@ -20,7 +21,8 @@ export class CoursesComponent implements OnInit {
     private coursesService: CoursesService,
     public dialog: MatDialog,
     public router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {
     // Nosso service vai listar o nosso curso
     this.courses$ = this.coursesService.list().pipe(
@@ -51,5 +53,12 @@ export class CoursesComponent implements OnInit {
   onEdit(course: Course){
     // Define a rota a ser chamada junto com id do curso
     this.router.navigate(["edit", course._id], {relativeTo: this.route});
+  }
+
+  onRemove(course: Course){
+    this.coursesService.remove(course._id).subscribe(() => {
+      this.snackBar.open('Curso removido com sucesso!', 'X', { duration: 5000, 
+        verticalPosition: 'top', horizontalPosition: 'center' });
+    });
   }
 }
