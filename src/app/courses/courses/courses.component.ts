@@ -7,6 +7,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 
 import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-courses',
@@ -24,7 +25,6 @@ export class CoursesComponent implements OnInit {
     private route: ActivatedRoute,
     private snackBar: MatSnackBar
   ) {
-    // Nosso service vai listar o nosso curso
     this.courses$ = this.coursesService.list().pipe(
       catchError((error) => {
         this.onError('Erro ao carregar cursos');
@@ -56,9 +56,21 @@ export class CoursesComponent implements OnInit {
   }
 
   onRemove(course: Course){
+    this.refresh();
     this.coursesService.remove(course._id).subscribe(() => {
       this.snackBar.open('Curso removido com sucesso!', 'X', { duration: 5000, 
         verticalPosition: 'top', horizontalPosition: 'center' });
-    });
+    }, () => this.onError('Erro ao tentar remover curso'));
   }
+
+  // Atualizar os dados removidos na tela 
+  refresh(){
+    this.courses$ = this.coursesService.list().pipe(
+      catchError((error) => {
+        this.onError('Erro ao carregar cursos');
+        return of([]);
+      })
+    );
+  }
+
 }
