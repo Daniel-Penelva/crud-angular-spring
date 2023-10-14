@@ -17,7 +17,7 @@ import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmat
 })
 export class CoursesComponent implements OnInit {
   // O caractere $ é frequentemente usado como uma convenção para indicar que a variável é um Observable
-  courses$: Observable<Course[]>;
+  courses$: Observable<Course[]> | null = null;
 
   constructor(
     private coursesService: CoursesService,
@@ -26,12 +26,7 @@ export class CoursesComponent implements OnInit {
     private route: ActivatedRoute,
     private snackBar: MatSnackBar
   ) {
-    this.courses$ = this.coursesService.list().pipe(
-      catchError((error) => {
-        this.onError('Erro ao carregar cursos');
-        return of([]);
-      })
-    );
+    this.refresh();
   }
 
   // Atualizar os dados removidos na tela
