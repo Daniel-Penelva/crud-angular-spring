@@ -776,3 +776,78 @@ preencher um formulário com dados existentes, como ao editar um registro. Note 
 campos do formulário e os valores correspondentes. Vale ressaltar que se você deseja definir apenas alguns campos do formulário, pode usar o 
 método `patchValue()` em vez de `setValue()`, que permite definir um subconjunto dos campos do formulário sem a necessidade de incluir todos os 
 campos no objeto.
+
+----------------------------------------------------------------------- // -----------------------------------------------------------------------
+
+Angular Material - Validação de Formulário Front-End:
+https://material.angular.io/components/form-field/overview
+
+```
+getErrorMessage(fieldname: string){
+    const field = this.form.get(fieldname);
+
+    // Verifica se não existe erro 
+    if(field ?.hasError('required')){
+      return 'Campo obrigatório';
+
+    } if(field ?.hasError('minlength')){
+      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 5;
+      return `Tamanho mínimo precisa ser de ${requiredLength} caracteres`;
+
+    } if(field ?.hasError('maxlength')){
+      const requiredLength = field.errors ? field.errors['maxlength']['requiredLength'] : 100;
+      return `Tamanho máximo excedido de ${requiredLength} caracteres`;
+    }
+```
+
+A função recebe um parâmetro `fieldname`, que é uma string representando o nome de um campo em um formulário. 
+
+Explicando passo a passo o que esse script faz:
+
+1. `const field = this.form.get(fieldname);`: Aqui, a função tenta obter um campo do formulário usando o nome especificado em `fieldname`. 
+O `this.form` é um tipo de objeto que contém um método `get` para acessar campos do formulário.
+
+2. O script então verifica se há erros no campo obtido:
+
+   a. `if (field?.hasError('required'))`: Verifica se o campo tem um erro com a chave `'required'`. Se houver, retorna a string `'Campo 
+       obrigatório'`, indicando que o campo é obrigatório e o usuário deve preenchê-lo.
+
+   b. `if (field?.hasError('minlength'))`: Verifica se o campo tem um erro com a chave `'minlength'`. Se houver, ele extrai o valor 
+      `requiredLength` do erro e, se disponível, caso contrário, usa o valor padrão 5. Em seguida, retorna uma mensagem informando que o tamanho 
+      mínimo do campo precisa ser de `requiredLength` caracteres.
+
+   c. `if (field?.hasError('maxlength'))`: Verifica se o campo tem um erro com a chave `'maxlength'`. Se houver, ele extrai o valor 
+      `requiredLength` do erro e, se disponível, caso contrário, usa o valor padrão 100. Em seguida, retorna uma mensagem informando que o 
+      tamanho máximo do campo foi excedido, limitado a `requiredLength` caracteres.
+
+3. Se nenhum dos erros acima for encontrado, a função retorna a string `'Campo inválido'`, indicando que o campo possui algum tipo de erro não 
+especificado.
+
+Em resumo, essa função é usada para obter mensagens de erro para campos de um formulário, com base em três tipos de erro: 'required', 
+'minlength' e 'maxlength'. Se um campo não tiver nenhum desses erros, ele retornará a mensagem padrão 'Campo inválido'. Essa função é útil em 
+formulários para fornecer feedback ao usuário sobre os problemas encontrados nos campos.
+
+Bom Saber:
+
+O `?` do "if (field?.hasError('required'))" faz parte da sintaxe do JavaScript e é chamado de "operador de acesso condicional" ou "operador de 
+coalescência nula". Ele foi introduzido no ECMAScript 2020 (ES11) e é usado para verificar se um objeto ou propriedade existe antes de tentar 
+acessá-lo para evitar erros de referência indefinida.
+
+Aqui está o que acontece com e sem o operador `?`:
+
+1. **Com o operador `?`**:
+
+   - `field?.hasError('required')`: Isso verifica se `field` existe e se tem um método `hasError`. Se `field` não existe ou não tem um método 
+     `hasError`, a expressão retorna `undefined`. Caso contrário, ele chama `hasError('required')` no objeto `field`.
+
+   - Se `field` não existe ou não tem um método `hasError`, a condição do `if` é falsa, e o bloco do `if` não é executado.
+
+2. **Sem o operador `?`**:
+
+   - `field.hasError('required')`: Sem o operador de acesso condicional, se `field` não existe, ou se `field` não tem um método `hasError`, isso 
+     resultará em um erro. Especificamente, você obterá um erro do tipo "TypeError" indicando que `hasError` é indefinido em `field`, se `field` 
+     não existir.
+
+Portanto, o operador `?` é uma forma de lidar com possíveis referências indefinidas de forma segura, evitando que o código quebre se `field` ou 
+`hasError` não estiverem definidos ou não existirem. É uma adição útil para lidar com valores opcionais e é especialmente útil em situações em 
+que você não tem controle total sobre a estrutura dos objetos que está acessando.
