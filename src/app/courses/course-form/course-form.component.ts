@@ -17,7 +17,7 @@ export class CourseFormComponent implements OnInit {
   // Grupo de campos
   form = this.formBuilder.group({
     _id:[''],
-    name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
     category: ['', [Validators.required]],
   });
 
@@ -66,7 +66,7 @@ export class CourseFormComponent implements OnInit {
       return 'Campo obrigatório';
 
     } if(field ?.hasError('minlength')){
-      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 5;
+      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 3;
       return `Tamanho mínimo precisa ser de ${requiredLength} caracteres`;
 
     } if(field ?.hasError('maxlength')){
