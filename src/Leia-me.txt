@@ -851,3 +851,16 @@ Aqui está o que acontece com e sem o operador `?`:
 Portanto, o operador `?` é uma forma de lidar com possíveis referências indefinidas de forma segura, evitando que o código quebre se `field` ou 
 `hasError` não estiverem definidos ou não existirem. É uma adição útil para lidar com valores opcionais e é especialmente útil em situações em 
 que você não tem controle total sobre a estrutura dos objetos que está acessando.
+
+----------------------------------------------------------------------- // -----------------------------------------------------------------------
+
+Ao atualizar a versão do angular para 15 foi necessário apagar a pasta node-module para limpar a sujeira de outras dependências. Depois de 
+apagado eu criei novamente através do comando "npm i" para instalar o "node-modules" e depois foi utilizado o comando "npm audit fix".
+
+Lembrando que o node-module contém as dependências do projeto e essas dependencias são add no node-modules de acordo com que está mo arquivo 
+package.json, que lista todas as dependências do projeto, incluindo as versões específicas necessárias. Em resumo, a pasta node-modules é uma 
+parte fundamental de um projeto Angular, pois armazena as dependências necessárias para o desenvolvimento e execução do aplicativo.
+
+É importante incluir a pasta node-modules no arquivo .gitignore ao usar um sistema de controle de versão como o Git. Isso porque as dependências 
+podem ser facilmente instaladas novamente usando os comandos "npm install" ou "yarn install" com base nas informações fornecidas no arquivo 
+package.json. Armazenar a pasta node_modules no repositório do Git não é prático devido ao seu tamanho e à capacidade de regeneração.
